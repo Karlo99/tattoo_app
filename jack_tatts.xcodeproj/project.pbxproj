@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5329C9612DDF8BCE00879A49 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C9602DDF8BCE00879A49 /* MainView.swift */; };
+		5329C9632DDF8BDF00879A49 /* SideMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C9622DDF8BDF00879A49 /* SideMenuHeaderView.swift */; };
+		5329C9692DDF8C1300879A49 /* TrashcanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C9682DDF8C1300879A49 /* TrashcanView.swift */; };
+		5329C96B2DDF8C5100879A49 /* SideMenuRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C96A2DDF8C5100879A49 /* SideMenuRowView.swift */; };
+		5329C96D2DDF8C7F00879A49 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C96C2DDF8C7F00879A49 /* SideMenuView.swift */; };
 		9B65F4742D32358E009C214F /* jack_tattsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65F4732D32358E009C214F /* jack_tattsApp.swift */; };
 		9B65F4762D32358E009C214F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65F4752D32358E009C214F /* ContentView.swift */; };
 		9B65F4782D323599009C214F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B65F4772D323599009C214F /* Assets.xcassets */; };
@@ -34,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5329C9602DDF8BCE00879A49 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5329C9622DDF8BDF00879A49 /* SideMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeaderView.swift; sourceTree = "<group>"; };
+		5329C9682DDF8C1300879A49 /* TrashcanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashcanView.swift; sourceTree = "<group>"; };
+		5329C96A2DDF8C5100879A49 /* SideMenuRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuRowView.swift; sourceTree = "<group>"; };
+		5329C96C2DDF8C7F00879A49 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		9B65F4702D32358E009C214F /* jack_tatts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jack_tatts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B65F4732D32358E009C214F /* jack_tattsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jack_tattsApp.swift; sourceTree = "<group>"; };
 		9B65F4752D32358E009C214F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,6 +105,11 @@
 		9B65F4722D32358E009C214F /* jack_tatts */ = {
 			isa = PBXGroup;
 			children = (
+				5329C9602DDF8BCE00879A49 /* MainView.swift */,
+				5329C96C2DDF8C7F00879A49 /* SideMenuView.swift */,
+				5329C9622DDF8BDF00879A49 /* SideMenuHeaderView.swift */,
+				5329C9682DDF8C1300879A49 /* TrashcanView.swift */,
+				5329C96A2DDF8C5100879A49 /* SideMenuRowView.swift */,
 				9B65F4732D32358E009C214F /* jack_tattsApp.swift */,
 				9B65F4752D32358E009C214F /* ContentView.swift */,
 				9B65F4772D323599009C214F /* Assets.xcassets */,
@@ -193,7 +208,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					9B65F46F2D32358E009C214F = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -260,7 +275,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B65F4762D32358E009C214F /* ContentView.swift in Sources */,
+				5329C96D2DDF8C7F00879A49 /* SideMenuView.swift in Sources */,
+				5329C9632DDF8BDF00879A49 /* SideMenuHeaderView.swift in Sources */,
+				5329C9692DDF8C1300879A49 /* TrashcanView.swift in Sources */,
+				5329C9612DDF8BCE00879A49 /* MainView.swift in Sources */,
 				9B65F4742D32358E009C214F /* jack_tattsApp.swift in Sources */,
+				5329C96B2DDF8C5100879A49 /* SideMenuRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,9 +350,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -388,9 +410,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -414,7 +438,9 @@
 				CODE_SIGN_ENTITLEMENTS = jack_tatts/jack_tatts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"jack_tatts/Preview Content\"";
+				DEVELOPMENT_TEAM = GZKDHP6W6F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -450,7 +476,9 @@
 				CODE_SIGN_ENTITLEMENTS = jack_tatts/jack_tatts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"jack_tatts/Preview Content\"";
+				DEVELOPMENT_TEAM = GZKDHP6W6F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -481,10 +509,10 @@
 		9B65F4992D32359A009C214F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -503,10 +531,10 @@
 		9B65F49A2D32359A009C214F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -525,9 +553,9 @@
 		9B65F49C2D32359A009C214F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -546,9 +574,9 @@
 		9B65F49D2D32359A009C214F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
