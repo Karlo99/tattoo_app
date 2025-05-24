@@ -28,6 +28,9 @@ struct ContentView: View {
             
             // Foreground content
             VStack {
+                
+                
+                
                 Text("Tap to Explode")
                     .foregroundColor(.white)
                     .padding()
