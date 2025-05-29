@@ -12,7 +12,19 @@ struct CloudyGoButton: View {
                 // 💡 Centered content using full-screen ZStack
                 ZStack {
                     
-
+                    
+                    
+                    Image("cloud7")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50, height: 100)
+                        .offset(y: animateCloud3 ? -20 : -100)
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color.red, lineWidth: 4)
+                        )
+                        .animation(Animation.easeInOut(duration: 5).repeatForever(autoreverses: true), value: animateCloud3)
+                    
                     // Cloud 1 (top-left)
                     Image("cloud1")
                         .resizable()
@@ -24,6 +36,20 @@ struct CloudyGoButton: View {
                                     .stroke(Color.red, lineWidth: 4)
                         )
                         .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true), value: animateCloud1)
+                    
+                    
+                    
+                    Image("cloud5")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25, height: 100)
+                        .offset(x: 120, y: animateCloud1 ? -50 : -60)
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color.red, lineWidth: 4)
+                        )
+                        .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true), value: animateCloud1)
+                    
 
                     // Cloud 2 (bottom-right)
                     Image("cloud2")
@@ -31,6 +57,7 @@ struct CloudyGoButton: View {
                         .aspectRatio(contentMode: .fit)
                         .offset(x: 220, y: animateCloud2 ? 130 : 100)
                         .animation(Animation.easeInOut(duration: 4).repeatForever(autoreverses: true), value: animateCloud2)
+                    
 
                     // Cloud 3 (floating above)
                     Image("cloud3")
@@ -38,6 +65,16 @@ struct CloudyGoButton: View {
                         .aspectRatio(contentMode: .fit)
                         .offset(y: animateCloud3 ? -180 : -150)
                         .animation(Animation.easeInOut(duration: 5).repeatForever(autoreverses: true), value: animateCloud3)
+                    
+                    // Cloud 3 (floating above)
+                    Image("cloud9")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 60)
+                        .offset(x: -180, y: animateCloud3 ? -170 : -150)
+                        .animation(Animation.easeInOut(duration: 5).repeatForever(autoreverses: true), value: animateCloud3)
+                    
+                    
                     
                     // Go Button (400px wide)
                     Button(action: {
