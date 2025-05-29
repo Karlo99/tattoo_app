@@ -20,20 +20,12 @@ struct SideMenuView: View {
     var body: some View {
         ZStack {
             if isShowing {
-                // Gray-out background
-                Rectangle()
-                    .opacity(0.2)
-                    .ignoresSafeArea()
-                    .onTapGesture {
-                        isShowing.toggle()
-                    }
                 
                 HStack {
                     VStack(alignment: .leading, spacing: 32) {
                         //Header stating Jack's Stacks
                         SideMenuHeaderView()
                     }
-                    .frame(width: 200, alignment: .leading)
                     
                     Spacer()
                 }
