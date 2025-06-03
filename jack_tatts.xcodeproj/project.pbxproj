@@ -23,6 +23,7 @@
 		9B65F4862D323599009C214F /* jack_tattsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65F4852D323599009C214F /* jack_tattsTests.swift */; };
 		9B65F4902D32359A009C214F /* jack_tattsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65F48F2D32359A009C214F /* jack_tattsUITests.swift */; };
 		9B65F4922D32359A009C214F /* jack_tattsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65F4912D32359A009C214F /* jack_tattsUITestsLaunchTests.swift */; };
+		9BFF2DAB2DDAEB0400085FA4 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = 9BFF2DAA2DDAEB0400085FA4 /* Pow */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BFF2DAB2DDAEB0400085FA4 /* Pow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +174,9 @@
 			dependencies = (
 			);
 			name = jack_tatts;
+			packageProductDependencies = (
+				9BFF2DAA2DDAEB0400085FA4 /* Pow */,
+			);
 			productName = jack_tatts;
 			productReference = 9B65F4702D32358E009C214F /* jack_tatts.app */;
 			productType = "com.apple.product-type.application";
@@ -244,6 +249,9 @@
 				Base,
 			);
 			mainGroup = 9B65F4672D32358E009C214F;
+			packageReferences = (
+				9BFF2DA92DDAEB0400085FA4 /* XCRemoteSwiftPackageReference "Pow" */,
+			);
 			productRefGroup = 9B65F4712D32358E009C214F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -648,6 +656,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9BFF2DA92DDAEB0400085FA4 /* XCRemoteSwiftPackageReference "Pow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EmergeTools/Pow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9BFF2DAA2DDAEB0400085FA4 /* Pow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9BFF2DA92DDAEB0400085FA4 /* XCRemoteSwiftPackageReference "Pow" */;
+			productName = Pow;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9B65F4682D32358E009C214F /* Project object */;
 }
