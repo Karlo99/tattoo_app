@@ -3,19 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5329C9612DDF8BCE00879A49 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C9602DDF8BCE00879A49 /* MainView.swift */; };
-		5329C9632DDF8BDF00879A49 /* SideMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C9622DDF8BDF00879A49 /* SideMenuHeaderView.swift */; };
-		5329C9692DDF8C1300879A49 /* TrashcanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C9682DDF8C1300879A49 /* TrashcanView.swift */; };
-		5329C96B2DDF8C5100879A49 /* SideMenuRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C96A2DDF8C5100879A49 /* SideMenuRowView.swift */; };
-		5329C96D2DDF8C7F00879A49 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C96C2DDF8C7F00879A49 /* SideMenuView.swift */; };
-		53A3D3542DE3F14E00D1E951 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A3D3532DE3F14E00D1E951 /* BottomSheetView.swift */; };
-		53A3D3562DE407C600D1E951 /* TattooImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A3D3552DE407C600D1E951 /* TattooImageView.swift */; };
-		53A3D3582DE40CE400D1E951 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A3D3572DE40CE400D1E951 /* BottomMenuView.swift */; };
-		53A3D35A2DE40D5000D1E951 /* MainView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A3D3592DE40D5000D1E951 /* MainView2.swift */; };
+		532A0A3D2DF36DA700E9C476 /* DraggableTattoo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532A0A3C2DF36DA700E9C476 /* DraggableTattoo.swift */; };
+		532A0A412DF372A000E9C476 /* TattooCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532A0A402DF372A000E9C476 /* TattooCanvasView.swift */; };
 		9B65F4742D32358E009C214F /* jack_tattsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65F4732D32358E009C214F /* jack_tattsApp.swift */; };
 		9B65F4762D32358E009C214F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65F4752D32358E009C214F /* ContentView.swift */; };
 		9B65F4782D323599009C214F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B65F4772D323599009C214F /* Assets.xcassets */; };
@@ -44,15 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5329C9602DDF8BCE00879A49 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		5329C9622DDF8BDF00879A49 /* SideMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeaderView.swift; sourceTree = "<group>"; };
-		5329C9682DDF8C1300879A49 /* TrashcanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashcanView.swift; sourceTree = "<group>"; };
-		5329C96A2DDF8C5100879A49 /* SideMenuRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuRowView.swift; sourceTree = "<group>"; };
-		5329C96C2DDF8C7F00879A49 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
-		53A3D3532DE3F14E00D1E951 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
-		53A3D3552DE407C600D1E951 /* TattooImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TattooImageView.swift; sourceTree = "<group>"; };
-		53A3D3572DE40CE400D1E951 /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
-		53A3D3592DE40D5000D1E951 /* MainView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView2.swift; sourceTree = "<group>"; };
+		532A0A3C2DF36DA700E9C476 /* DraggableTattoo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableTattoo.swift; sourceTree = "<group>"; };
+		532A0A402DF372A000E9C476 /* TattooCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TattooCanvasView.swift; sourceTree = "<group>"; };
 		9B65F4702D32358E009C214F /* jack_tatts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jack_tatts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B65F4732D32358E009C214F /* jack_tattsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jack_tattsApp.swift; sourceTree = "<group>"; };
 		9B65F4752D32358E009C214F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +51,36 @@
 		9B65F48F2D32359A009C214F /* jack_tattsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jack_tattsUITests.swift; sourceTree = "<group>"; };
 		9B65F4912D32359A009C214F /* jack_tattsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jack_tattsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		537A1E702DEF5EBC004F4B7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				tattoos.json,
+			);
+			target = 9B65F46F2D32358E009C214F /* jack_tatts */;
+		};
+		537A1E712DEF5EBC004F4B7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				tattoos.json,
+			);
+			target = 9B65F4802D323599009C214F /* jack_tattsTests */;
+		};
+		537A1E722DEF5EBC004F4B7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				tattoos.json,
+			);
+			target = 9B65F48A2D323599009C214F /* jack_tattsUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		53196DE22DF20606008BE186 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		53196DE62DF2063E008BE186 /* Utils */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Utils; sourceTree = "<group>"; };
+		537A1E6B2DEF5EAC004F4B7B /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (537A1E702DEF5EBC004F4B7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 537A1E712DEF5EBC004F4B7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 537A1E722DEF5EBC004F4B7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		9B65F46D2D32358E009C214F /* Frameworks */ = {
@@ -95,8 +111,9 @@
 		9B65F4672D32358E009C214F = {
 			isa = PBXGroup;
 			children = (
+				532A0A402DF372A000E9C476 /* TattooCanvasView.swift */,
+				537A1E6B2DEF5EAC004F4B7B /* Resources */,
 				9B65F4722D32358E009C214F /* jack_tatts */,
-				9B65F4842D323599009C214F /* jack_tattsTests */,
 				9B65F48E2D32359A009C214F /* jack_tattsUITests */,
 				9B65F4712D32358E009C214F /* Products */,
 			);
@@ -115,20 +132,15 @@
 		9B65F4722D32358E009C214F /* jack_tatts */ = {
 			isa = PBXGroup;
 			children = (
-				5329C9602DDF8BCE00879A49 /* MainView.swift */,
-				53A3D3532DE3F14E00D1E951 /* BottomSheetView.swift */,
-				5329C96C2DDF8C7F00879A49 /* SideMenuView.swift */,
-				5329C9622DDF8BDF00879A49 /* SideMenuHeaderView.swift */,
-				5329C9682DDF8C1300879A49 /* TrashcanView.swift */,
-				53A3D3592DE40D5000D1E951 /* MainView2.swift */,
-				53A3D3572DE40CE400D1E951 /* BottomMenuView.swift */,
-				53A3D3552DE407C600D1E951 /* TattooImageView.swift */,
-				5329C96A2DDF8C5100879A49 /* SideMenuRowView.swift */,
+				53196DE62DF2063E008BE186 /* Utils */,
+				53196DE22DF20606008BE186 /* Views */,
+				9B65F4842D323599009C214F /* jack_tattsTests */,
 				9B65F4732D32358E009C214F /* jack_tattsApp.swift */,
 				9B65F4752D32358E009C214F /* ContentView.swift */,
 				9B65F4772D323599009C214F /* Assets.xcassets */,
 				9B65F4792D323599009C214F /* jack_tatts.entitlements */,
 				9B65F47A2D323599009C214F /* Preview Content */,
+				532A0A3C2DF36DA700E9C476 /* DraggableTattoo.swift */,
 			);
 			path = jack_tatts;
 			sourceTree = "<group>";
@@ -172,6 +184,10 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				53196DE22DF20606008BE186 /* Views */,
+				53196DE62DF2063E008BE186 /* Utils */,
 			);
 			name = jack_tatts;
 			packageProductDependencies = (
@@ -294,17 +310,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				532A0A412DF372A000E9C476 /* TattooCanvasView.swift in Sources */,
+				532A0A3D2DF36DA700E9C476 /* DraggableTattoo.swift in Sources */,
 				9B65F4762D32358E009C214F /* ContentView.swift in Sources */,
-				53A3D3562DE407C600D1E951 /* TattooImageView.swift in Sources */,
-				53A3D3582DE40CE400D1E951 /* BottomMenuView.swift in Sources */,
-				5329C96D2DDF8C7F00879A49 /* SideMenuView.swift in Sources */,
-				53A3D3542DE3F14E00D1E951 /* BottomSheetView.swift in Sources */,
-				5329C9632DDF8BDF00879A49 /* SideMenuHeaderView.swift in Sources */,
-				5329C9692DDF8C1300879A49 /* TrashcanView.swift in Sources */,
-				5329C9612DDF8BCE00879A49 /* MainView.swift in Sources */,
 				9B65F4742D32358E009C214F /* jack_tattsApp.swift in Sources */,
-				5329C96B2DDF8C5100879A49 /* SideMenuRowView.swift in Sources */,
-				53A3D35A2DE40D5000D1E951 /* MainView2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -80,11 +80,7 @@ struct MainView2: View {
                 if isBottomMenuVisible {
                     VStack {
                         Spacer()
-                        BottomMenuView(
-                            isImageVisible: $isImageVisible,
-                            imageOffset: $imageOffset,
-                            dragStartPosition: $dragStartPosition
-                        )
+                        BottomMenuView( )
                         .transition(.move(edge: .bottom))
                         .animation(.easeInOut, value: isBottomMenuVisible)
                     }
