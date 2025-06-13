@@ -22,7 +22,8 @@ struct MainView: View {
 
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .topTrailing) {
+            ZStack(alignment: .bottom) {
+                
                 Image("background")
                     .resizable()
                     .ignoresSafeArea()
@@ -43,6 +44,7 @@ struct MainView: View {
                                   .resizable()
                                   .scaledToFit()
                                   .frame(width: 400, height: 400)
+                              
                           }
 
                           // Tattoo above the fists
@@ -63,25 +65,10 @@ struct MainView: View {
                           }
                       }
 
-                      Spacer()
+                    Spacer()
+                    BottomSheetView()
                   }
-
-                  // Go Button
-                  if !showMenu {
-                      Button(action: {
-                          showingBottomSheet.toggle()
-                      }) {
-                          Image("go")
-                              .resizable()
-                              .scaledToFit()
-                              .frame(width: 100, height: 100)
-                      }
-                      .offset(x: -270, y: 180)
-                      .sheet(isPresented: $showingBottomSheet) {
-                          BottomSheetView()
-                            .presentationDetents([.fraction(0.2), .medium])
-                      }
-                    }
+                
             }
             
             //Hides the toolbar when its clicked

@@ -77,14 +77,14 @@ struct MainView2: View {
                 }
 
                 // Bottom menu overlay
-                if isBottomMenuVisible {
-                    VStack {
-                        Spacer()
-                        BottomMenuView( )
-                        .transition(.move(edge: .bottom))
-                        .animation(.easeInOut, value: isBottomMenuVisible)
-                    }
-                }
+//                if isBottomMenuVisible {
+//                    VStack {
+//                        Spacer()
+//                        BottomMenuView()
+//                        .transition(.move(edge: .bottom))
+//                        .animation(.easeInOut, value: isBottomMenuVisible)
+//                    }
+//                }
             }
 
             .toolbar {
