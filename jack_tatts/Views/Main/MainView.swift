@@ -18,6 +18,7 @@ struct MainView: View {
     @State private var dragStartPosition: CGSize = .zero
     @State private var isDraggingTattoo: Bool = false
     
+    @State private var selectedTattooName: String? = nil
     @State private var removedImages: [UIImage] = []
 
     var body: some View {
@@ -63,10 +64,10 @@ struct MainView: View {
                               )
 
                           }
+                        
                       }
-
-                    Spacer()
                     BottomSheetView()
+                        .padding(15)
                   }
                 
             }

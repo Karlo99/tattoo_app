@@ -10,14 +10,19 @@ import SwiftUI
 struct BottomSheetView: View {
     // Image Loading
     @State private var tattoos: [DraggableTattoo] = []
+    var onTattooDragged: ((DraggableTattoo) -> Void)? = nil // <-- Add this
     
     let rows = [GridItem(.flexible())]
     let cloudWidth: CGFloat = 350
     let cloudHeight: CGFloat = 150
-//    let scrollContentWidth: CGFloat = 800
     
     var body: some View {
             ZStack {
+                
+                Image("transScrollCloud")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: cloudWidth, height: cloudHeight)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     
@@ -50,20 +55,23 @@ struct BottomSheetView: View {
                         .frame(width: cloudWidth, height: cloudHeight)
                     
                 )
-                Image("transScrollCloud")
-                    .renderingMode(.template)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: cloudWidth, height: cloudHeight)
+                
+//                Image("transScrollCloud")
+//                    .renderingMode(.template)
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: cloudWidth, height: cloudHeight)
             }
     
             .frame(width: cloudWidth, height: cloudHeight)
+
                     
             .onAppear(){
                 let names = loadTattooNames()
                 tattoos = names.map { DraggableTattoo(name: $0) }
             }
-}
+
+    }
 }
 
 
