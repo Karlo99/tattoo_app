@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		532A0A3D2DF36DA700E9C476 /* DraggableTattoo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532A0A3C2DF36DA700E9C476 /* DraggableTattoo.swift */; };
 		532A0A412DF372A000E9C476 /* TattooCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532A0A402DF372A000E9C476 /* TattooCanvasView.swift */; };
 		53CD932D2DF9E9BF00EF88FB /* CloudShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CD932C2DF9E9BF00EF88FB /* CloudShape.swift */; };
 		9B65F4742D32358E009C214F /* jack_tattsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65F4732D32358E009C214F /* jack_tattsApp.swift */; };
@@ -38,7 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		532A0A3C2DF36DA700E9C476 /* DraggableTattoo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableTattoo.swift; sourceTree = "<group>"; };
 		532A0A402DF372A000E9C476 /* TattooCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TattooCanvasView.swift; sourceTree = "<group>"; };
 		53CD932C2DF9E9BF00EF88FB /* CloudShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudShape.swift; sourceTree = "<group>"; };
 		9B65F4702D32358E009C214F /* jack_tatts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jack_tatts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,7 +141,6 @@
 				9B65F4772D323599009C214F /* Assets.xcassets */,
 				9B65F4792D323599009C214F /* jack_tatts.entitlements */,
 				9B65F47A2D323599009C214F /* Preview Content */,
-				532A0A3C2DF36DA700E9C476 /* DraggableTattoo.swift */,
 			);
 			path = jack_tatts;
 			sourceTree = "<group>";
@@ -315,7 +312,6 @@
 			files = (
 				53CD932D2DF9E9BF00EF88FB /* CloudShape.swift in Sources */,
 				532A0A412DF372A000E9C476 /* TattooCanvasView.swift in Sources */,
-				532A0A3D2DF36DA700E9C476 /* DraggableTattoo.swift in Sources */,
 				9B65F4762D32358E009C214F /* ContentView.swift in Sources */,
 				9B65F4742D32358E009C214F /* jack_tattsApp.swift in Sources */,
 			);

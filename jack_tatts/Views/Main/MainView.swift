@@ -20,6 +20,10 @@ struct MainView: View {
     
     @State private var selectedTattooName: String? = nil
     @State private var removedImages: [UIImage] = []
+    
+    @State private var leftArmFrame: CGRect = .zero
+    @State private var rightArmFrame: CGRect = .zero
+    
 
     var body: some View {
         NavigationStack {
@@ -35,38 +39,44 @@ struct MainView: View {
                     ZStack{
                         // Arms at the back
                           HStack(spacing: -150) {
-                              Image("clenched_fist")
-                                  .resizable()
-                                  .scaledToFit()
-                                  .frame(width: 400, height: 400)
-                                  .scaleEffect(x: -1, y: 1)
-
-                              Image("clenched_fist")
-                                  .resizable()
-                                  .scaledToFit()
-                                  .frame(width: 400, height: 400)
-                              
-                          }
-
-                          // Tattoo above the fists
-                          if isImageVisible {
-                              TattooImageView(
-                                  imageOffset: $imageOffset,
-                                  dragStartPosition: $dragStartPosition,
-                                  isImageVisible: $isImageVisible,
-                                  isDragging: $isDraggingTattoo,
-                                  onDragEnd: {
-                                      if imageOffset.height < -100 {
-                                          isImageVisible = true
-                                          showingBottomSheet = false
+                              // Using Geo Reader to be able to know location of the arms
+                              GeometryReader { geo in
+                                  
+                                  Image("clenched_fist")
+                                      .resizable()
+                                      .scaledToFit()
+                                      .frame(width: 400, height: 400)
+                                      .scaleEffect(x: -1, y: 1)
+                                      .onAppear {
+                                          leftArmFrame = geo.frame(in: .global)
                                       }
-                                  }
-                              )
-
+                                      .onChange(of: geo.frame(in: .global)) { newValue in
+                                          leftArmFrame = newValue
+                                      }
+                              }
+                              .frame(width: 400, height: 400)
+                              
+                              GeometryReader { geo in
+                                  Image("clenched_fist")
+                                      .resizable()
+                                      .scaledToFit()
+                                      .frame(width: 400, height: 400)
+                                      .onAppear {
+                                          rightArmFrame = geo.frame(in: .global)
+                                      }
+                                      .onChange(of: geo.frame(in: .global)) { newValue in
+                                          rightArmFrame = newValue
+                                      }
+                                  
+                              }
+                              .frame(width: 400, height: 400)
+                              
+                              
                           }
                         
                       }
-                    BottomSheetView()
+                    BottomSheetView(leftArmFrame: leftArmFrame,
+                                    rightArmFrame: rightArmFrame)
                         .padding(15)
                   }
                 
@@ -85,7 +95,6 @@ struct MainView: View {
                         .offset(y: -60)
                 }
             }
-
             .edgesIgnoringSafeArea(.all)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(

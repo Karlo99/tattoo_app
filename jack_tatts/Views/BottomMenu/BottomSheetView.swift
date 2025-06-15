@@ -15,32 +15,27 @@ struct BottomSheetView: View {
     let rows = [GridItem(.flexible())]
     let cloudWidth: CGFloat = 350
     let cloudHeight: CGFloat = 150
+    let leftArmFrame: CGRect
+    let rightArmFrame: CGRect
+    
+    @State private var activeTattoos: [DraggableTattoo] = []
     
     var body: some View {
             ZStack {
-                
+                // Creates the cloud outline
                 Image("transScrollCloud")
                     .resizable()
                     .scaledToFit()
                     .frame(width: cloudWidth, height: cloudHeight)
                 
+
                 ScrollView(.horizontal, showsIndicators: false) {
                     
                     LazyHGrid(rows: rows, spacing: 20) {
                         ForEach(tattoos.indices, id: \.self) { index in
                             let tattoo = tattoos[index]
                             
-                            Image(tattoo.name)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 140, height: 140)
-                                .offset(tattoos[index].offset)
-                                .gesture(
-                                    DragGesture()
-                                        .onChanged { value in
-                                            tattoos[index].offset = value.translation
-                                        }
-                                )
+                            DraggableZoomableRotatableImage(imageName: tattoo.name, leftArmFrame: leftArmFrame, rightArmFrame: rightArmFrame)
                         }
                     }
                     .padding(.horizontal)
@@ -48,19 +43,14 @@ struct BottomSheetView: View {
                 }
                 .frame(width: cloudWidth, height: cloudHeight)
                 
+                // allows for the images to stay within the cloud bounds
                 .mask(
                     Image("skinnyScrollCloud")
                         .resizable()
                         .scaledToFit()
                         .frame(width: cloudWidth, height: cloudHeight)
-                    
-                )
+                    )
                 
-//                Image("transScrollCloud")
-//                    .renderingMode(.template)
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: cloudWidth, height: cloudHeight)
             }
     
             .frame(width: cloudWidth, height: cloudHeight)
@@ -83,6 +73,7 @@ struct BottomSheetView: View {
 struct BottomSheetViewPreviewWrapper: View {
 
         var body: some View {
-            BottomSheetView()
+            BottomSheetView(leftArmFrame: CGRect(x: 100, y: 100, width: 200, height: 200),
+                            rightArmFrame: CGRect(x: 300, y: 100, width: 200, height: 200))
         }
     }
