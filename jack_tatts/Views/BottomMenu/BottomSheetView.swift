@@ -23,37 +23,45 @@ struct BottomSheetView: View {
     var body: some View {
             ZStack {
                 // Creates the cloud outline
+//                Image("transScrollCloud")
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: cloudWidth, height: cloudHeight)
+//                
+
+                ScrollView(.horizontal, showsIndicators: false) {
+                    
+                    LazyHGrid(rows: rows, spacing: 0) {
+                        ForEach(tattoos.indices, id: \.self) { index in
+                            let tattoo = tattoos[index]
+                            
+                            DraggableZoomableRotatableImage(imageName: tattoo.name, leftArmFrame: leftArmFrame, rightArmFrame: rightArmFrame, onDropped: { droppedTatoo in onTattooDragged?(droppedTatoo)})
+                            // This frame controls the width between each design
+                                .frame(width: 90, height: 90)
+                        }
+                    }
+                    .padding(.horizontal)
+//                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: cloudHeight, maxHeight: .infinity)
+                }
+                // Designs stay within the cloud boundaries
+                .frame(width: cloudWidth - 50)
+                
+                // allows for the images to stay within the cloud bounds
+//                .mask(
+//                    Image("skinnyScrollCloud")
+//                        .resizable()
+//                        .frame(width: cloudWidth, height: .infinity)
+//                    )
+                
                 Image("transScrollCloud")
                     .resizable()
                     .scaledToFit()
                     .frame(width: cloudWidth, height: cloudHeight)
-                
-
-                ScrollView(.horizontal, showsIndicators: false) {
-                    
-                    LazyHGrid(rows: rows, spacing: 20) {
-                        ForEach(tattoos.indices, id: \.self) { index in
-                            let tattoo = tattoos[index]
-                            
-                            DraggableZoomableRotatableImage(imageName: tattoo.name, leftArmFrame: leftArmFrame, rightArmFrame: rightArmFrame)
-                        }
-                    }
-                    .padding(.horizontal)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: cloudHeight, maxHeight: cloudHeight)
-                }
-                .frame(width: cloudWidth, height: cloudHeight)
-                
-                // allows for the images to stay within the cloud bounds
-                .mask(
-                    Image("skinnyScrollCloud")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: cloudWidth, height: cloudHeight)
-                    )
+                    .allowsHitTesting(false)
                 
             }
     
-            .frame(width: cloudWidth, height: cloudHeight)
+//            .frame(width: cloudWidth, height: cloudHeight)
 
                     
             .onAppear(){
