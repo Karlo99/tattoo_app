@@ -55,21 +55,21 @@ struct DraggableZoomableRotatableImage: View {
                 )
 
                 // Snap logic
-                if leftArmFrame.contains(imageCenter) {
-                    withAnimation(.spring()) {
-                        offset = CGSize(
-                            width: leftArmFrame.midX - imageSize / 2,
-                            height: leftArmFrame.midY - imageSize / 2
-                        )
-                    }
-                } else if rightArmFrame.contains(imageCenter) {
-                    withAnimation(.spring()) {
-                        offset = CGSize(
-                            width: rightArmFrame.midX - imageSize / 2,
-                            height: rightArmFrame.midY - imageSize / 2
-                        )
-                    }
-                }
+//                if leftArmFrame.contains(imageCenter) {
+//                    withAnimation(.spring()) {
+//                        offset = CGSize(
+//                            width: leftArmFrame.midX - imageSize / 2,
+//                            height: leftArmFrame.midY - imageSize / 2
+//                        )
+//                    }
+//                } else if rightArmFrame.contains(imageCenter) {
+//                    withAnimation(.spring()) {
+//                        offset = CGSize(
+//                            width: rightArmFrame.midX - imageSize / 2,
+//                            height: rightArmFrame.midY - imageSize / 2
+//                        )
+//                    }
+//                }
 
                 lastOffset = offset
                 onDropped?(DraggableTattoo(name: imageName, offset: offset))

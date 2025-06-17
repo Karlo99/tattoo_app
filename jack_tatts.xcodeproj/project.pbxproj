@@ -111,8 +111,6 @@
 		9B65F4672D32358E009C214F = {
 			isa = PBXGroup;
 			children = (
-				5394442F2E0090F700D565D1 /* armsView.swift */,
-				5394442D2E00909B00D565D1 /* TattoosView.swift */,
 				537A1E6B2DEF5EAC004F4B7B /* Resources */,
 				9B65F4722D32358E009C214F /* jack_tatts */,
 				9B65F48E2D32359A009C214F /* jack_tattsUITests */,
@@ -141,6 +139,8 @@
 				9B65F4772D323599009C214F /* Assets.xcassets */,
 				9B65F4792D323599009C214F /* jack_tatts.entitlements */,
 				9B65F47A2D323599009C214F /* Preview Content */,
+				5394442F2E0090F700D565D1 /* armsView.swift */,
+				5394442D2E00909B00D565D1 /* TattoosView.swift */,
 			);
 			path = jack_tatts;
 			sourceTree = "<group>";

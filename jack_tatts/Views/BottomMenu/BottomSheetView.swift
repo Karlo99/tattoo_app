@@ -22,12 +22,6 @@ struct BottomSheetView: View {
     
     var body: some View {
             ZStack {
-                // Creates the cloud outline
-//                Image("transScrollCloud")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: cloudWidth, height: cloudHeight)
-//                
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     
@@ -41,17 +35,9 @@ struct BottomSheetView: View {
                         }
                     }
                     .padding(.horizontal)
-//                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: cloudHeight, maxHeight: .infinity)
                 }
                 // Designs stay within the cloud boundaries
                 .frame(width: cloudWidth - 50)
-                
-                // allows for the images to stay within the cloud bounds
-//                .mask(
-//                    Image("skinnyScrollCloud")
-//                        .resizable()
-//                        .frame(width: cloudWidth, height: .infinity)
-//                    )
                 
                 Image("transScrollCloud")
                     .resizable()
@@ -61,8 +47,6 @@ struct BottomSheetView: View {
                 
             }
     
-//            .frame(width: cloudWidth, height: cloudHeight)
-
                     
             .onAppear(){
                 let names = loadTattooNames()
