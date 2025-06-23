@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5394442E2E00909B00D565D1 /* TattoosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5394442D2E00909B00D565D1 /* TattoosView.swift */; };
-		539444302E0090F700D565D1 /* armsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5394442F2E0090F700D565D1 /* armsView.swift */; };
 		9B65F4742D32358E009C214F /* jack_tattsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65F4732D32358E009C214F /* jack_tattsApp.swift */; };
 		9B65F4762D32358E009C214F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65F4752D32358E009C214F /* ContentView.swift */; };
 		9B65F4782D323599009C214F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B65F4772D323599009C214F /* Assets.xcassets */; };
@@ -37,8 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5394442D2E00909B00D565D1 /* TattoosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TattoosView.swift; sourceTree = "<group>"; };
-		5394442F2E0090F700D565D1 /* armsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = armsView.swift; sourceTree = "<group>"; };
 		9B65F4702D32358E009C214F /* jack_tatts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jack_tatts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B65F4732D32358E009C214F /* jack_tattsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jack_tattsApp.swift; sourceTree = "<group>"; };
 		9B65F4752D32358E009C214F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -139,8 +135,6 @@
 				9B65F4772D323599009C214F /* Assets.xcassets */,
 				9B65F4792D323599009C214F /* jack_tatts.entitlements */,
 				9B65F47A2D323599009C214F /* Preview Content */,
-				5394442F2E0090F700D565D1 /* armsView.swift */,
-				5394442D2E00909B00D565D1 /* TattoosView.swift */,
 			);
 			path = jack_tatts;
 			sourceTree = "<group>";
@@ -241,7 +235,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1630;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					9B65F46F2D32358E009C214F = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -310,8 +304,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5394442E2E00909B00D565D1 /* TattoosView.swift in Sources */,
-				539444302E0090F700D565D1 /* armsView.swift in Sources */,
 				9B65F4762D32358E009C214F /* ContentView.swift in Sources */,
 				9B65F4742D32358E009C214F /* jack_tattsApp.swift in Sources */,
 			);
@@ -354,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -414,6 +407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

@@ -78,7 +78,9 @@ struct CloudyGoButton: View {
 //                    .animation(Animation.easeInOut(duration: 5).repeatForever(autoreverses: true), value: animateCloud3)
 //
                 NavigationStack {
-                    NavigationLink(destination: MainView()) {
+                    NavigationLink(destination: MainView(
+                        
+                    )) {
                         Image("go")
                             .resizable()
                             .aspectRatio(contentMode: .fit)

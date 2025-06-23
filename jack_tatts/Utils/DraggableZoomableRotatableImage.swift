@@ -9,13 +9,14 @@ import SwiftUI
 
 struct DraggableZoomableRotatableImage: View {
     let imageName: String
-    // Needed to be able to snap the tattoos to the arms
+    // Where the image is dropped
     let leftArmFrame: CGRect
     let rightArmFrame: CGRect
     var onDropped: ((DraggableTattoo)->Void)? = nil
     
-    @State private var offset: CGSize = .zero
+    @State private var currentOffset: CGSize = .zero
     @State private var lastOffset: CGSize = .zero
+    @State private var dragOffset: CGSize = .zero
     
     // Zooming in
     @State private var scale: CGFloat = 1.0
@@ -24,59 +25,57 @@ struct DraggableZoomableRotatableImage: View {
     //Rotation
     @State private var rotation: Angle = .degrees(0)
     @State private var lastRotation: Angle = .degrees(0)
+    @GestureState private var gestureRotation: Angle = .zero
+
     
     @State private var allowDrag = false
     
     var body: some View {
-        Image(imageName)
-            .resizable()
-            .scaledToFit()
-            .clipped()
-            .frame(width: 200, height: 200)
-            .offset(offset)
-            .scaleEffect(scale)
-            .rotationEffect(rotation)
-            .gesture(dragGesture.simultaneously(with: magnificationGesture).simultaneously(with: rotationGesture))
-        
+        GeometryReader { geo in
+            Image(imageName)
+                .resizable()
+                .scaledToFit()
+                .clipped()
+                // Size that the images appear as
+                .frame(width: 150, height: 150)
+                .scaleEffect(scale)
+                .rotationEffect(lastRotation + gestureRotation)
+                .offset(currentOffset)
+                .gesture(
+                    dragGesture(in: geo)
+                        .simultaneously(with: magnificationGesture)
+                        .simultaneously(with: rotationGesture)
+                )
+                .frame(width: 200, height: 200)
+        }
+        .frame(width: 200, height: 200)
     }
     
-    // Drag gesture
-    var dragGesture: some Gesture {
+    // Drag Gesture
+    func dragGesture(in geo: GeometryProxy) -> some Gesture {
         DragGesture()
             .onChanged { value in
-                offset = CGSize(width: lastOffset.width + value.translation.width,
-                                height: lastOffset.height + value.translation.height)
-            }
-            .onEnded { _ in
-                let imageSize: CGFloat = 200 
-                let imageCenter = CGPoint(
-                    x: offset.width + imageSize / 2,
-                    y: offset.height + imageSize / 2
+                currentOffset = CGSize(
+                    width: dragOffset.width + value.translation.width,
+                    height: dragOffset.height + value.translation.height
                 )
-
-                // Snap logic
-//                if leftArmFrame.contains(imageCenter) {
-//                    withAnimation(.spring()) {
-//                        offset = CGSize(
-//                            width: leftArmFrame.midX - imageSize / 2,
-//                            height: leftArmFrame.midY - imageSize / 2
-//                        )
-//                    }
-//                } else if rightArmFrame.contains(imageCenter) {
-//                    withAnimation(.spring()) {
-//                        offset = CGSize(
-//                            width: rightArmFrame.midX - imageSize / 2,
-//                            height: rightArmFrame.midY - imageSize / 2
-//                        )
-//                    }
-//                }
-
-                lastOffset = offset
-                onDropped?(DraggableTattoo(name: imageName, offset: offset))
+            }
+            .onEnded { value in
+                dragOffset = currentOffset
+                
+                // Identifying which arm it was dragged to
+                let globalLocation = geo.frame(in: .global).origin.x
+                let screenWidth = UIScreen.main.bounds.width
+                let isLeft = globalLocation < screenWidth / 2
+                
+                // Placing the image onto correct arm
+                let adjustedOffset = CGSize(width: isLeft ? -100: 100, height: 50)
+                
+                onDropped?(DraggableTattoo(name: imageName, offset: adjustedOffset))
             }
     }
-
-    // Pinch zoom gesture
+    
+    // Magnification Gesture
     var magnificationGesture: some Gesture {
         MagnificationGesture()
             .onChanged { value in
@@ -90,16 +89,17 @@ struct DraggableZoomableRotatableImage: View {
     // Rotation gesture
     var rotationGesture: some Gesture {
         RotationGesture()
-            .onChanged { value in
-                rotation = lastRotation + value
+            .updating($gestureRotation) { value, state, _ in
+                state = value
             }
-            .onEnded { _ in
-                lastRotation = rotation
+            .onEnded { value in
+                lastRotation += value
             }
     }
+
 }
 
 #Preview {
-    DraggableZoomableRotatableImage(imageName: "toliet", leftArmFrame: CGRect(x: 100, y: 100, width: 200, height: 200),
+    DraggableZoomableRotatableImage(imageName: "bedBug", leftArmFrame: CGRect(x: 100, y: 100, width: 200, height: 200),
                                     rightArmFrame: CGRect(x: 300, y: 100, width: 200, height: 200))
 }

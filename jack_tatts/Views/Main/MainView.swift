@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-
 struct MainView: View {
     
     @State private var leftArmFrame: CGRect = .zero
     @State private var rightArmFrame: CGRect = .zero
     
+    // Tattoos that have been picked by the user
     @State private var droppedTattoos: [DraggableTattoo] = []
     @State private var cloudTattoos: [DraggableTattoo] = []
+    
     
     let rows = [GridItem(.flexible())]
     let cloudHeight: CGFloat = 150
@@ -22,14 +23,11 @@ struct MainView: View {
 
     var body: some View {
         ZStack {
-            Image("background")
-                .resizable()
-                .ignoresSafeArea()
+            MainBackgroundView()
             
             VStack(spacing: 0) {
                 Spacer()
 
-                // MAIN INTERACTIVE CANVAS
                 ZStack {
                     
                     // Tattoos dropped from cloud
@@ -39,9 +37,12 @@ struct MainView: View {
                             leftArmFrame: leftArmFrame,
                             rightArmFrame: rightArmFrame,
                             onDropped: { updated in
-                                // Optional: update position if needed
+                                if let index = droppedTattoos.firstIndex(where: { $0.id == updated.id }) {
+                                        droppedTattoos[index] = updated
+                                    }
                             }
                         )
+                        .offset(tattoo.offset)
                         .frame(width: 100, height: 100)
                         .zIndex(3)
                     }
@@ -53,7 +54,7 @@ struct MainView: View {
                 .frame(maxHeight: .infinity)
                 
                 Spacer()
-                    .frame(height: cloudHeight) // Reserve space for cloud
+                    .frame(height: cloudHeight) // Reserve space for cloud at the bottom
             }
             
             VStack {
@@ -78,12 +79,14 @@ struct MainView: View {
                                         droppedTattoos.append(dropped)
                                     }
                                 )
-                                .frame(width: 90, height: 90)
+                                .frame(width: 80, height: 80)
                             }
                         }
                         .padding(.horizontal)
                     }
-                    .frame(height: cloudHeight)
+                    // Padding for the tattoo images to look like they are within the cloud
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, 25)
                 }
                 .frame(width: cloudWidth, height: cloudHeight)
                 
@@ -99,16 +102,13 @@ struct MainView: View {
 }
 
 
-
 #Preview {
     MainViewPreviewWrapper()
 }
 
 struct MainViewPreviewWrapper: View {
-    @State private var offset: CGSize = .zero
-    @State private var visible: Bool = false
-
     var body: some View {
         MainView()
     }
 }
+
