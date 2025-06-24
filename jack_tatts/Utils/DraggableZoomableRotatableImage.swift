@@ -45,10 +45,8 @@ struct DraggableZoomableRotatableImage: View {
                 .rotationEffect(lastRotation + gestureRotation)
                 .offset(currentOffset)
                 .contentShape(Rectangle())
-                .onTapGesture(count: 1) {
-                    isDragging.toggle()
-                }
-                .gesture(isDragging ? dragGesture(in: geo) : nil)
+                // Removed the tap gesture here
+                .gesture(dragGesture(in: geo))   // Always active drag gesture
                 .simultaneousGesture(magnificationGesture)
                 .simultaneousGesture(rotationGesture)
                 .frame(width: 200, height: 200)

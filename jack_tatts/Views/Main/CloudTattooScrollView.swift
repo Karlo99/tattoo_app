@@ -11,7 +11,7 @@ struct CloudTattooScrollView: View {
     let cloudTattoos: [DraggableTattoo]
     let leftArmFrame: CGRect
     let rightArmFrame: CGRect
-    let onDrop: (DraggableTattoo) -> Void
+    let onDrop: (DraggableTattoo, CGPoint) -> Void
 
     let rows = [GridItem(.flexible())]
     let cloudWidth: CGFloat = 350
@@ -30,12 +30,7 @@ struct CloudTattooScrollView: View {
                     LazyHGrid(rows: rows, spacing: 0) {
                         ForEach(cloudTattoos.indices, id: \.self) { index in
                             let tattoo = cloudTattoos[index]
-                            DraggableZoomableRotatableImage(
-                                imageName: tattoo.name,
-                                leftArmFrame: leftArmFrame,
-                                rightArmFrame: rightArmFrame,
-                                onDropped: onDrop
-                            )
+                            TouchAndHoldDraggableImage(tattoo: tattoo, onDropped: onDrop)
                             .frame(width: 80, height: 80)
                             .shadow(radius: 10, y: 10)
                             .scrollTransition(topLeading: .interactive, bottomTrailing: .interactive, axis: .horizontal) { effect, phase in
@@ -69,7 +64,7 @@ struct CloudTattooScrollViewPreviewWrapper: View {
         DraggableTattoo(name: "chair"),
         DraggableTattoo(name: "bedBug"),
         DraggableTattoo(name: "cannon"),
-        DraggableTattoo(name: "thug")
+        DraggableTattoo(name: "skull")
     ]
 
     var body: some View {
@@ -77,7 +72,8 @@ struct CloudTattooScrollViewPreviewWrapper: View {
             cloudTattoos: sampleTattoos,
             leftArmFrame: leftArmFrame,
             rightArmFrame: rightArmFrame,
-            onDrop: { tattoo in
+            onDrop: { tattoo, position in
+                print("Dropped tattoo \(tattoo.name) at \(position)")
                 dummyDroppedTattoos.append(tattoo)
             }
         )

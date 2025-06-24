@@ -39,7 +39,9 @@ struct MainView: View {
                     cloudTattoos: cloudTattoos,
                     leftArmFrame: leftArmFrame,
                     rightArmFrame: rightArmFrame,
-                    onDrop: { droppedTattoos.append($0) }
+                    onDrop: { tattoo, _ in
+                        droppedTattoos.append(tattoo)
+                    }
                 )
             }
             .zIndex(0)
