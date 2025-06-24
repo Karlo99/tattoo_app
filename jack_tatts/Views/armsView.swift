@@ -20,7 +20,7 @@ struct ArmsView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 400, height: 400)
-                    .scaleEffect(x: -1, y: 1)
+                    .scaleEffect(x: -1, y: -1)
                     .onAppear {
                         DispatchQueue.main.async {
                             leftArmFrame = geo.frame(in: .global)
@@ -34,6 +34,7 @@ struct ArmsView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 400, height: 400)
+                    .scaleEffect(x: 1, y: -1)
                     .onAppear {
                         DispatchQueue.main.async {
                             rightArmFrame = geo.frame(in: .global)

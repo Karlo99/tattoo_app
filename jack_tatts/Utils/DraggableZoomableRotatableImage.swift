@@ -26,6 +26,9 @@ struct DraggableZoomableRotatableImage: View {
     @State private var rotation: Angle = .degrees(0)
     @State private var lastRotation: Angle = .degrees(0)
     @GestureState private var gestureRotation: Angle = .zero
+    
+    // Dragging when double tap
+    @State private var isDragging = false
 
     
     @State private var allowDrag = false
@@ -41,11 +44,13 @@ struct DraggableZoomableRotatableImage: View {
                 .scaleEffect(scale)
                 .rotationEffect(lastRotation + gestureRotation)
                 .offset(currentOffset)
-                .gesture(
-                    dragGesture(in: geo)
-                        .simultaneously(with: magnificationGesture)
-                        .simultaneously(with: rotationGesture)
-                )
+                .contentShape(Rectangle())
+                .onTapGesture(count: 1) {
+                    isDragging.toggle()
+                }
+                .gesture(isDragging ? dragGesture(in: geo) : nil)
+                .simultaneousGesture(magnificationGesture)
+                .simultaneousGesture(rotationGesture)
                 .frame(width: 200, height: 200)
         }
         .frame(width: 200, height: 200)
