@@ -13,28 +13,20 @@ struct CloudyGoButton: View {
                 ZStack {
                     
                     
-                    
+                    // Cloud7 floating above go!
                     Image("cloud7")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 50, height: 100)
-                        .offset(y: animateCloud3 ? -20 : -100)
-                        .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.red, lineWidth: 4)
-                        )
+                        .frame(width: 40, height: 100)
+                        .offset(x: -25, y: animateCloud3 ? -70 : -50)
                         .animation(Animation.easeInOut(duration: 5).repeatForever(autoreverses: true), value: animateCloud3)
                     
-                    // Cloud 1 (top-left)
+                    // Cloud 1 (top-left of go!)
                     Image("cloud1")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .offset(x: -50, y: animateCloud1 ? -50 : -100)
-                        .frame(width: 100, height: 100)
-                        .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.red, lineWidth: 4)
-                        )
+                        .offset(x: -60, y: animateCloud1 ? -90 : -105)
+                        .frame(width: 70, height: 100)
                         .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true), value: animateCloud1)
                     
                     
@@ -44,10 +36,6 @@ struct CloudyGoButton: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 25, height: 100)
                         .offset(x: 120, y: animateCloud1 ? -50 : -60)
-                        .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.red, lineWidth: 4)
-                        )
                         .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true), value: animateCloud1)
                     
 
@@ -84,10 +72,6 @@ struct CloudyGoButton: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 150, height: 150)
-                            .overlay(
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .stroke(Color.red, lineWidth: 4)
-                            )
                             
                     }
                 }
