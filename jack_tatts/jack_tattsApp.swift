@@ -11,7 +11,8 @@ import SwiftUI
 struct jack_tattsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+           CloudyGoButton()
+           CartoonCloudsView()
         }
     }
 }
