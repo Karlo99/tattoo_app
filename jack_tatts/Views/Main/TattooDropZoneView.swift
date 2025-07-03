@@ -34,6 +34,7 @@ struct TattooDropZoneView: View {
                 .zIndex(2)
         }
         .frame(maxHeight: .infinity)
+
     }
 }
 
@@ -44,9 +45,9 @@ struct TattooDropZoneView: View {
 
 struct TattooDropZonePreviewWrapper: View {
     @State private var droppedTattoos: [DraggableTattoo] = [
-        DraggableTattoo(name: "bedBug", offset: .zero),
-        DraggableTattoo(name: "cannon", offset: CGSize(width: 50, height: 20))
-    ]
+        DraggableTattoo(name: "bedBug"),
+        DraggableTattoo(name: "cannon")
+        ]
     @State private var leftArmFrame: CGRect = .zero
     @State private var rightArmFrame: CGRect = .zero
 

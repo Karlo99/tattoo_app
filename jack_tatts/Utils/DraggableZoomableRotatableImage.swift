@@ -44,7 +44,6 @@ struct DraggableZoomableRotatableImage: View {
                 .scaleEffect(scale)
                 .rotationEffect(lastRotation + gestureRotation)
                 .offset(currentOffset)
-                .contentShape(Rectangle())
                 // Removed the tap gesture here
                 .gesture(dragGesture(in: geo))   // Always active drag gesture
                 .simultaneousGesture(magnificationGesture)
@@ -65,15 +64,14 @@ struct DraggableZoomableRotatableImage: View {
             }
             .onEnded { value in
                 dragOffset = currentOffset
-                
-                // Identifying which arm it was dragged to
+
                 let globalLocation = geo.frame(in: .global).origin.x
                 let screenWidth = UIScreen.main.bounds.width
                 let isLeft = globalLocation < screenWidth / 2
-                
+
                 // Placing the image onto correct arm
                 let adjustedOffset = CGSize(width: isLeft ? -100: 100, height: 50)
-                
+
                 onDropped?(DraggableTattoo(name: imageName, offset: adjustedOffset))
             }
     }
