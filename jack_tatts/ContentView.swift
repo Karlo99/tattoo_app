@@ -131,7 +131,7 @@ struct CloudyGoButton: View {
 
 struct CartoonCloudsView: View {
     @State private var currentCloudIndex = 0
-    let cloudImages = ["goCloud1", "goCloud2", "goCloud3", "goCloud5","goCloud6","goCloud7","goCloud8","goCloud9","goCloud10", "goCloud11","goCloud12","goCloud13"]
+    let cloudImages = ["goCloud1", "goCloud2", "goCloud3", "goCloud5","goCloud6", "goCloud8","goCloud9","goCloud10", "goCloud11","goCloud12","goCloud13"]
 
     var body: some View {
         ZStack {
@@ -163,7 +163,6 @@ struct CartoonCloudsView: View {
 struct CloudyGoButton_Previews: PreviewProvider {
     static var previews: some View {
         CloudyGoButton()
-        
     }
 }
 
