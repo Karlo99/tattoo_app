@@ -40,15 +40,6 @@ struct TattooMachineAnimationView: View {
 
     var body: some View {
         ZStack {
-            // Trail dots
-            ForEach(trailDots.indices, id: \.self) { i in
-                Circle()
-                    .fill(Color.black.opacity(0.3))
-                    .frame(width: 12, height: 12)
-                    .position(trailDots[i])
-                    .animation(.easeOut(duration: 0.5), value: trailDots)
-            }
-
             // Tattoo machine image
             if let pos = position {
                 Image("tattoo_machine")
@@ -106,5 +97,4 @@ struct TattooMachineAnimationView: View {
         }
     )
     .frame(width: 200, height: 400)
-    .background(Color.gray.opacity(0.2))
 }

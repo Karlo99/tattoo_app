@@ -15,72 +15,86 @@ struct MainView: View {
     
     // Tattoo Machine
     @State private var isMachineOn: Bool = false
+    
+    @State private var showTattooMachineAnimation = false
 
     let cloudHeight: CGFloat = 150
 
     var body: some View {
-        
-        ZStack {
+        GeometryReader { geo in
             
-            MainBackgroundView()
-            
-
-            VStack(spacing: 0) {
-                Spacer()
-
-                TattooDropZoneView(
-                    droppedTattoos: $droppedTattoos,
-                    leftArmFrame: $leftArmFrame,
-                    rightArmFrame: $rightArmFrame
-                )
+            ZStack {
                 
-                Spacer()
-                    .frame(height: cloudHeight)
+                MainBackgroundView()
+                
 
-            }
-            
-            Button(action: {
-                if !droppedTattoos.isEmpty {
-                    isMachineOn = true
-                    print("Tattoo machine started")
+                VStack(spacing: 0) {
+                    Spacer()
+
+                    TattooDropZoneView( 
+                        droppedTattoos: $droppedTattoos,
+                        leftArmFrame: $leftArmFrame,
+                        rightArmFrame: $rightArmFrame
+                    )
+                    
+                    Spacer()
+                        .frame(height: cloudHeight)
+
                 }
-            }) {
-                Image("go")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
-            }
-            .disabled(isMachineOn)
-            .opacity(isMachineOn ? 0.5 : 1.0)
+                
+                Button(action: {
+                      if !droppedTattoos.isEmpty {
+                          print("✅ GO button tapped. Tattoos dropped: \(droppedTattoos.count)")
+                          showTattooMachineAnimation = true
+                      } else {
+                          print("❌ GO button tapped but no tattoos dropped.")
+                      }
+                  }) {
+                      Image("go")
+                          .resizable()
+                          .scaledToFit()
+                          .frame(width: 100, height: 100)
+                  }
+                  
+                  // Show the animation view only if flagged
+                  if showTattooMachineAnimation, leftArmFrame != .zero {
+                      let geoFrame = geo.frame(in: .global)
+                      // Calculate arm origin point relative to this view's coordinate system
+                      let armOriginX = leftArmFrame.origin.x - geoFrame.origin.x + leftArmFrame.width / 2
+                      let armOriginY = leftArmFrame.origin.y - geoFrame.origin.y + leftArmFrame.height / 2
+                      
+                      TattooMachineAnimationView(
+                          armOrigin: CGPoint(x: armOriginX, y: armOriginY),
+                          onFinished: {
+                              print("Animation finished!")
+                              showTattooMachineAnimation = false
+                          }
+                      )
+                      .zIndex(10)
+                  }
 
-            // Tattoo Machine Animation
-            if isMachineOn {
-                TattooMachineAnimationView(
-                    armOrigin: CGPoint(x: leftArmFrame.minX, y: leftArmFrame.minY),
-                    onFinished: {
-                        isMachineOn = false
-                    }
-                )
-                .zIndex(10)
+                
+                
+                VStack {
+                    Spacer()
+                    CloudTattooScrollView(
+                        cloudTattoos: cloudTattoos,
+                        leftArmFrame: leftArmFrame,
+                        rightArmFrame: rightArmFrame,
+                        onDrop: { tattoo, _ in
+                            droppedTattoos.append(tattoo)
+                        }
+                    )
+                }
+                .zIndex(0)
+            }
+            .onAppear {
+                let names = loadTattooNames()
+                cloudTattoos = names.map { DraggableTattoo(name: $0) }
             }
             
-            VStack {
-                Spacer()
-                CloudTattooScrollView(
-                    cloudTattoos: cloudTattoos,
-                    leftArmFrame: leftArmFrame,
-                    rightArmFrame: rightArmFrame,
-                    onDrop: { tattoo, _ in
-                        droppedTattoos.append(tattoo)
-                    }
-                )
-            }
-            .zIndex(0)
         }
-        .onAppear {
-            let names = loadTattooNames()
-            cloudTattoos = names.map { DraggableTattoo(name: $0) }
-        }
+        .offset(x: -120)
     }
 }
 
