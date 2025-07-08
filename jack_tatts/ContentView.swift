@@ -46,42 +46,41 @@ struct CloudyGoButton: View {
     var body: some View {
         ZStack {
             Color.clear.ignoresSafeArea()
-
-            ZStack {
-                // Optional: Replace these with AnimatedCloud views if you want dynamic animation
-                Image("cloud7")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 100)
-                    .offset(x: -25, y: animateCloud3 ? -100 : -90)
-                    .animation(Animation.easeInOut(duration: 20).repeatForever(autoreverses: true), value: animateCloud3)
-
-                Image("cloud11")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 100)
-                    .offset(x: 170, y: animateCloud3 ? 200 : 210)
-                    .animation(Animation.easeInOut(duration: 5).repeatForever(autoreverses: true), value: animateCloud3)
-
-                Image("cloud5")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 25)
-                    .offset(x: 120, y: animateCloud3 ? -230 : -250)
-                    .animation(Animation.easeInOut(duration: 20).repeatForever(autoreverses: true), value: animateCloud3)
-
-                Image("cloud9")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 60, height: 60)
-                    .offset(x: -180, y: animateCloud3 ? -180 : -160)
-                    .animation(Animation.easeInOut(duration: 10).repeatForever(autoreverses: true), value: animateCloud1)
-
-                // Optional: Fully animated clouds using your custom AnimatedCloud component
-                CartoonCloudsView()
-
-                // Go Button with navigation
-                NavigationStack {
+            NavigationStack {
+                ZStack {
+                    // Optional: Replace these with AnimatedCloud views if you want dynamic animation
+                    Image("cloud7")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 100)
+                        .offset(x: -25, y: animateCloud3 ? -100 : -90)
+                        .animation(Animation.easeInOut(duration: 20).repeatForever(autoreverses: true), value: animateCloud3)
+                    
+                    Image("cloud11")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                        .offset(x: 170, y: animateCloud3 ? 200 : 210)
+                        .animation(Animation.easeInOut(duration: 5).repeatForever(autoreverses: true), value: animateCloud3)
+                    
+                    Image("cloud5")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25, height: 25)
+                        .offset(x: 120, y: animateCloud3 ? -230 : -250)
+                        .animation(Animation.easeInOut(duration: 20).repeatForever(autoreverses: true), value: animateCloud3)
+                    
+                    Image("cloud9")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 60, height: 60)
+                        .offset(x: -180, y: animateCloud3 ? -180 : -160)
+                        .animation(Animation.easeInOut(duration: 10).repeatForever(autoreverses: true), value: animateCloud1)
+                    
+                    // Optional: Fully animated clouds using your custom AnimatedCloud component
+                    CartoonCloudsView()
+                    
+                    // Go Button with navigation
                     NavigationLink(destination: MainView()) {
                         Image("go")
                             .resizable()
@@ -92,6 +91,7 @@ struct CloudyGoButton: View {
                     .buttonStyle(PlainButtonStyle())
                 }
             }
+            .preferredColorScheme(.light)
             .onAppear {
                 animateCloud1 = true
                 animateCloud2 = true

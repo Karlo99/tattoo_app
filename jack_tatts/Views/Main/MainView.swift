@@ -58,18 +58,7 @@ struct MainView: View {
                   
                   // Show the animation view only if flagged
                   if showTattooMachineAnimation, leftArmFrame != .zero {
-                      let geoFrame = geo.frame(in: .global)
-                      // Calculate arm origin point relative to this view's coordinate system
-                      let armOriginX = leftArmFrame.origin.x - geoFrame.origin.x + leftArmFrame.width / 2
-                      let armOriginY = leftArmFrame.origin.y - geoFrame.origin.y + leftArmFrame.height / 2
-                      
-                      TattooMachineAnimationView(
-                          armOrigin: CGPoint(x: armOriginX, y: armOriginY),
-                          onFinished: {
-                              print("Animation finished!")
-                              showTattooMachineAnimation = false
-                          }
-                      )
+                      TattooMachineAnimationView()
                       .zIndex(10)
                   }
 

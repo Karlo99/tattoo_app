@@ -8,93 +8,59 @@
 import SwiftUI
 
 struct TattooMachineAnimationView: View {
-    let armOrigin: CGPoint
-    let onFinished: () -> Void
-
-    @State private var position: CGPoint?
-    @State private var currentIndex: Int = 0
-    @State private var trailDots: [CGPoint] = []
-
-    // Generate zig-zag points only based on fixed vertical range
-    private var zigZagPoints: [CGPoint] {
-        // Define vertical range and step count
-        let numberOfSteps = 20
-        let stepY: CGFloat = 20
-
-        // Define horizontal bounds for zig-zag
-        let leftX = armOrigin.x + 20
-        let rightX = armOrigin.x + 120
-
-        var points: [CGPoint] = []
-        var yOffset: CGFloat = 0
-        var toggle = true
-
-        for _ in 0..<numberOfSteps {
-            let x = toggle ? leftX : rightX
-            points.append(CGPoint(x: x, y: armOrigin.y + yOffset))
-            yOffset += stepY
-            toggle.toggle()
-        }
-        return points
-    }
+    // Drag motion to razor
+    @GestureState private var dragOffset = CGSize.zero
+    @State private var handPosition = CGPoint(x: 200, y: 300)
+    
+    // Hair Patch
+    @State private var hairPatches: [HairPatch] = []
+    @State private var moveRight = true
+    @State private var shavedEverything = false
+    
+    // Timer
+    let timer = Timer.publish(every: 0.015, on: .main, in: .common).autoconnect()
 
     var body: some View {
         ZStack {
-            // Tattoo machine image
-            if let pos = position {
-                Image("tattoo_machine")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .position(pos)
-                    .shadow(radius: 5)
-            }
+
+            Image("tattoo_machine")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200)
+                .position(handPosition)
         }
-        .onAppear {
-            startAnimation()
+        .onReceive(timer) { _ in
+            moveRazorAndShave()
         }
     }
-
-    private func startAnimation() {
-        currentIndex = 0
-        position = zigZagPoints.first
-        moveNext()
-    }
-
-    private func moveNext() {
-        guard currentIndex < zigZagPoints.count else {
-            onFinished()
-            return
+    
+    func moveRazorAndShave() {
+        if handPosition.y > 450 && shavedEverything { return }
+        
+        if handPosition.y > 450 {
+            shavedEverything = true
+            handPosition.x = 400
+            handPosition.y = 200
+            
         }
-
-        if let current = position {
-            trailDots.append(current)
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                if !trailDots.isEmpty {
-                    trailDots.removeFirst()
-                }
+        
+        if moveRight {
+            handPosition.x += 2
+            if handPosition.x > 300 {
+                moveRight = false
+                handPosition.y += 40
+            }
+        } else {
+            handPosition.x -= 2
+            if handPosition.x < 170 {
+                moveRight = true
+                handPosition.y += 40
             }
         }
-
-        withAnimation(.easeInOut(duration: 0.15)) {
-            position = zigZagPoints[currentIndex]
-        }
-
-        currentIndex += 1
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
-            moveNext()
-        }
+        
     }
 }
 
-
 #Preview {
-    TattooMachineAnimationView(
-        armOrigin: CGPoint(x: 50, y: 50),  // example starting point
-        onFinished: {
-            print("Animation finished in preview")
-        }
-    )
-    .frame(width: 200, height: 400)
+    TattooMachineAnimationView()
 }
