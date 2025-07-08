@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B4F10152E1CC5F70055217E /* CartoonCloudsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F10142E1CC5F70055217E /* CartoonCloudsView.swift */; };
+		9B4F10172E1CC61E0055217E /* AnimateCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F10162E1CC61E0055217E /* AnimateCloudView.swift */; };
+		9B4F10192E1CC6970055217E /* CloudyGoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F10182E1CC6970055217E /* CloudyGoButtonView.swift */; };
 		9B65F4742D32358E009C214F /* jack_tattsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65F4732D32358E009C214F /* jack_tattsApp.swift */; };
 		9B65F4762D32358E009C214F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65F4752D32358E009C214F /* ContentView.swift */; };
 		9B65F4782D323599009C214F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B65F4772D323599009C214F /* Assets.xcassets */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B4F10142E1CC5F70055217E /* CartoonCloudsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartoonCloudsView.swift; sourceTree = "<group>"; };
+		9B4F10162E1CC61E0055217E /* AnimateCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateCloudView.swift; sourceTree = "<group>"; };
+		9B4F10182E1CC6970055217E /* CloudyGoButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudyGoButtonView.swift; sourceTree = "<group>"; };
 		9B65F4702D32358E009C214F /* jack_tatts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jack_tatts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B65F4732D32358E009C214F /* jack_tattsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jack_tattsApp.swift; sourceTree = "<group>"; };
 		9B65F4752D32358E009C214F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +80,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B4F10112E1CC54B0055217E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9B65F4752D32358E009C214F /* ContentView.swift */,
+				9B4F10162E1CC61E0055217E /* AnimateCloudView.swift */,
+				9B4F10142E1CC5F70055217E /* CartoonCloudsView.swift */,
+				9B4F10182E1CC6970055217E /* CloudyGoButtonView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		9B65F4672D32358E009C214F = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +114,8 @@
 		9B65F4722D32358E009C214F /* jack_tatts */ = {
 			isa = PBXGroup;
 			children = (
+				9B4F10112E1CC54B0055217E /* Views */,
 				9B65F4732D32358E009C214F /* jack_tattsApp.swift */,
-				9B65F4752D32358E009C214F /* ContentView.swift */,
 				9B65F4772D323599009C214F /* Assets.xcassets */,
 				9B65F4792D323599009C214F /* jack_tatts.entitlements */,
 				9B65F47A2D323599009C214F /* Preview Content */,
@@ -268,7 +285,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B65F4762D32358E009C214F /* ContentView.swift in Sources */,
+				9B4F10152E1CC5F70055217E /* CartoonCloudsView.swift in Sources */,
+				9B4F10172E1CC61E0055217E /* AnimateCloudView.swift in Sources */,
 				9B65F4742D32358E009C214F /* jack_tattsApp.swift in Sources */,
+				9B4F10192E1CC6970055217E /* CloudyGoButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

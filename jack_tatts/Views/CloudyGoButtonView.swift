@@ -1,42 +1,10 @@
+//
+//  CloudyGoButtonView.swift
+//  jack_tatts
+//
+//  Created by carlos monterosa on 7/7/25.
+//
 import SwiftUI
-
-struct AnimatedCloud: View {
-    let imageName: String
-    let initialOffset: CGSize
-    let maxYOffset: CGFloat
-    let size: CGSize
-
-    @State private var yOffset: CGFloat = 0
-    @State private var opacity: Double = 2.0
-
-    var body: some View {
-        Image(imageName)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: size.width, height: size.height)
-            .offset(x: initialOffset.width, y: initialOffset.height + yOffset)
-            .opacity(opacity)
-            .onAppear {
-                startRandomAnimationLoop()
-            }
-    }
-
-    private func startRandomAnimationLoop() {
-        let duration = Double.random(in: 1...20)
-        withAnimation(Animation.easeInOut(duration: duration).repeatForever(autoreverses: true)) {
-            yOffset = CGFloat.random(in: -maxYOffset...maxYOffset)
-            opacity = Double.random(in: 0.0...0.01)
-        }
-
-        // Change the values slightly every few seconds for organic feel
-        Timer.scheduledTimer(withTimeInterval: duration, repeats: true) { _ in
-            withAnimation(Animation.easeInOut(duration: duration)) {
-                yOffset = CGFloat.random(in: -maxYOffset...maxYOffset)
-                opacity = Double.random(in: 0.0...0.5)
-            }
-        }
-    }
-}
 
 struct CloudyGoButton: View {
     @State private var animateCloud1 = false
@@ -128,42 +96,3 @@ struct CloudyGoButton: View {
         }
     }
 }
-
-struct CartoonCloudsView: View {
-    @State private var currentCloudIndex = 0
-    let cloudImages = ["goCloud1", "goCloud2", "goCloud3", "goCloud5","goCloud6","goCloud7","goCloud8","goCloud9","goCloud10", "goCloud11","goCloud12","goCloud13"]
-
-    var body: some View {
-        ZStack {
-            Image(cloudImages[currentCloudIndex])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 170, height: 120)
-                //.transition(.opacity.combined(with: .scale(scale: 1.5)))
-                .id(currentCloudIndex) // Forces view reload for transition
-        }
-        .animation(.easeInOut(duration: 0.1), value: currentCloudIndex)
-        .onAppear {
-            startLoopingAnimation()
-        }
-    }
-
-    func startLoopingAnimation() {
-        Timer.scheduledTimer(withTimeInterval: 0.15, repeats: true) { _ in
-            withAnimation {
-                currentCloudIndex = (currentCloudIndex + 1) % cloudImages.count
-            }
-        }
-    }
-}
-
-    
-
-
-struct CloudyGoButton_Previews: PreviewProvider {
-    static var previews: some View {
-        CloudyGoButton()
-        
-    }
-}
-
