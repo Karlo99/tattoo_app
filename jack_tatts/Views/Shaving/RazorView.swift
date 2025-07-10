@@ -10,15 +10,13 @@ import SwiftUI
 struct RazorView: View {
     // Drag motion to razor
     @GestureState private var dragOffset = CGSize.zero
-    @State private var handPosition = CGPoint(x: 200, y: 80)
+    @State private var handPosition = CGPoint(x: 150, y: 110)
     
-    // Hair Patch
-    @State private var hairPatches: [HairPatch] = []
-    @State private var moveRight = true
+    @State private var moveDown = true
     @State private var shavedEverything = false
     
     // Timer
-    let timer = Timer.publish(every: 0.005, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.015, on: .main, in: .common).autoconnect()
 
     var body: some View {
         NavigationStack {
@@ -33,7 +31,8 @@ struct RazorView: View {
                     .scaledToFit()
                     .frame(width: 200)
                     .position(handPosition)
-                    .rotationEffect(.degrees(90)) 
+                    .rotationEffect(.degrees(90))
+                
             }
             .onReceive(timer) { _ in
                 moveRazorAndShave()
@@ -47,25 +46,39 @@ struct RazorView: View {
     }
     
     func moveRazorAndShave() {
-        if moveRight {
+        //Starting on right jumping to the left
+        if handPosition.x > 360 && handPosition.y == 190{
+            handPosition.x = 200
+            handPosition.y = 320
+        }
+        
+        // Shaving left and exiting to next screen
+        if handPosition.x > 200 && handPosition.y > 400{
+            handPosition.x = 500
+            handPosition.y = 400
+            shavedEverything = true
+            return
+        }
+        
+        if moveDown {
             handPosition.x += 2
             if handPosition.x > 400 {
-                moveRight = false
-                handPosition.y += 40
+                moveDown = false
+                handPosition.y += 20
             }
         } else {
             handPosition.x -= 2
-            if handPosition.x < 170 {
-                moveRight = true
-                handPosition.y += 40
+            // Hand is going Up
+            if handPosition.x < 150 {
+                //Hand now goes down
+                moveDown = true
+                handPosition.y += 20
             }
         }
         
-        if handPosition.x < 50 {
-            shavedEverything = true
-        }    }
+    }
 }
 
-#Preview {
-    RazorView()
-}
+//#Preview {
+//    RazorView()
+//}
