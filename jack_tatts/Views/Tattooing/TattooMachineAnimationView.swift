@@ -21,11 +21,6 @@ struct TattooMachineAnimationView: View {
 
     var body: some View {
         ZStack {
-            
-//            ArmsView(
-//                leftArmFrame: .constant(CGRect(x: 0, y: 0, width: 100, height: 100)),
-//                rightArmFrame: .constant(CGRect(x: 100, y: 0, width: 100, height: 100))
-//            )
 
             Image("tattoo_machine")
                 .resizable()
@@ -33,16 +28,16 @@ struct TattooMachineAnimationView: View {
                 .frame(width: 200)
                 .position(handPosition)
         }
-//        VStack {
-//            Text("x: \(Int(handPosition.x)), y: \(Int(handPosition.y))")
-//                .font(.headline)
-//                .foregroundColor(.red)
-//                .padding()
-//                .background(Color.white.opacity(0.7))
-//                .cornerRadius(10)
-//                .padding()
-//            Spacer()
-//        }
+        VStack {
+            Text("x: \(Int(handPosition.x)), y: \(Int(handPosition.y))")
+                .font(.headline)
+                .foregroundColor(.red)
+                .padding()
+                .background(Color.white.opacity(0.7))
+                .cornerRadius(10)
+                .padding()
+            Spacer()
+        }
 
         
         .onReceive(timer) { _ in

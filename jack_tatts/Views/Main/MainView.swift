@@ -17,6 +17,9 @@ struct MainView: View {
     @State private var isMachineOn: Bool = false
     
     @State private var showTattooMachineAnimation = false
+    
+    // Help Sheet
+    @State private var showHelpSheet: Bool = false
 
     let cloudHeight: CGFloat = 150
 
@@ -76,11 +79,38 @@ struct MainView: View {
                     )
                 }
                 .zIndex(0)
+                
+                .overlay(
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                showHelpSheet = true
+                            }) {
+                                Image(systemName: "info.circle")
+                                    .font(.system(size: 26))
+                                    .padding(12)
+                                    .foregroundColor(.black)
+                                    .background(Image("background"))
+                                    .clipShape(.capsule)
+                                    .shadow(radius: 2)
+                            }
+                        }
+                        Spacer()
+                    }
+                    .padding(.top, 10) // ✅ Pushes below the notch
+                    .padding(.trailing, 20)
+                )
+                
             }
+            
             .onAppear {
                 let names = loadTattooNames()
                 cloudTattoos = names.map { DraggableTattoo(name: $0) }
             }
+            .sheet(isPresented: $showHelpSheet) {
+                            HelpSheetView()
+                        }
             
         }
         .offset(x: -120)
