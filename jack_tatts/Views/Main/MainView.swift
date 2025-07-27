@@ -14,15 +14,18 @@ struct MainView: View {
     @State private var cloudTattoos: [DraggableTattoo] = []
     
     // Tattoo Machine
-    @State private var isMachineOn: Bool = false
-    
     @State private var showTattooMachineAnimation = false
     
     // Help Sheet
     @State private var showHelpSheet: Bool = false
-
+    
+    // Share Button
+    @State private var isSharingActive: Bool = false
+    @State private var processedImage: Image? = nil
+    @State private var shareableImage: ShareableImage? = nil
+    
     let cloudHeight: CGFloat = 150
-
+    
     var body: some View {
         GeometryReader { geo in
             
@@ -30,11 +33,11 @@ struct MainView: View {
                 
                 MainBackgroundView()
                 
-
+                
                 VStack(spacing: 0) {
                     Spacer()
-
-                    TattooDropZoneView( 
+                    
+                    TattooDropZoneView(
                         droppedTattoos: $droppedTattoos,
                         leftArmFrame: $leftArmFrame,
                         rightArmFrame: $rightArmFrame
@@ -42,29 +45,31 @@ struct MainView: View {
                     
                     Spacer()
                         .frame(height: cloudHeight)
-
+                    
                 }
                 
                 Button(action: {
-                      if !droppedTattoos.isEmpty {
-                          print("✅ GO button tapped. Tattoos dropped: \(droppedTattoos.count)")
-                          showTattooMachineAnimation = true
-                      } else {
-                          print("❌ GO button tapped but no tattoos dropped.")
-                      }
-                  }) {
-                      Image("go")
-                          .resizable()
-                          .scaledToFit()
-                          .frame(width: 100, height: 100)
-                  }
-                  
-                  // Show the animation view only if flagged
-                  if showTattooMachineAnimation, leftArmFrame != .zero {
-                      TattooMachineAnimationView()
-                      .zIndex(10)
-                  }
-
+                    if !droppedTattoos.isEmpty {
+                        print("✅ GO button tapped. Tattoos dropped: \(droppedTattoos.count)")
+                        showTattooMachineAnimation = true
+                        captureTattooImage()
+                        isSharingActive = true
+                    } else {
+                        print("❌ GO button tapped but no tattoos dropped.")
+                    }
+                }) {
+                    Image("go")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                }
+                
+                // Show the animation view only if flagged
+                if showTattooMachineAnimation, leftArmFrame != .zero {
+                    TattooMachineAnimationView()
+                        .zIndex(10)
+                }
+                
                 
                 
                 VStack {
@@ -77,6 +82,10 @@ struct MainView: View {
                             droppedTattoos.append(tattoo)
                         }
                     )
+                    
+                    if let shareableImage = shareableImage, let preview = processedImage {
+                        ShareLink(item: shareableImage, preview: SharePreview("Jack's Tattoo", image: preview))
+                    }
                 }
                 .zIndex(0)
                 
@@ -98,8 +107,8 @@ struct MainView: View {
                         }
                         Spacer()
                     }
-                    .padding(.top, 10) // ✅ Pushes below the notch
-                    .padding(.trailing, 20)
+                        .padding(.top, 10)
+                        .padding(.trailing, 20)
                 )
                 
             }
@@ -109,13 +118,30 @@ struct MainView: View {
                 cloudTattoos = names.map { DraggableTattoo(name: $0) }
             }
             .sheet(isPresented: $showHelpSheet) {
-                            HelpSheetView()
-                        }
+                HelpSheetView()
+            }
             
         }
         .offset(x: -120)
     }
+    
+    func captureTattooImage() {
+        let content = TattooRenderView(droppedTattoos: droppedTattoos)
+        .frame(width: 300, height: 500)
+
+        let renderer = ImageRenderer(content: content)
+        renderer.scale = UIScreen.main.scale
+
+        if let uiImage = renderer.uiImage {
+            print("✅ Image rendered for sharing at scale: \(renderer.scale)")
+            processedImage = Image(uiImage: uiImage)
+            shareableImage = ShareableImage(image: uiImage)
+        } else {
+            print("❌ Failed to render image.")
+        }
+    }
 }
+
 
 
 

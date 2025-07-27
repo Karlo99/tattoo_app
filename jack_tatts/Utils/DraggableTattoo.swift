@@ -14,7 +14,20 @@ enum ArmSide {
 struct DraggableTattoo: Identifiable {
     let id = UUID()
     let name: String
-    var offset: CGSize = .zero
-    var dropPosition: CGPoint? = nil
-    var armSide: ArmSide? = nil
+    var offset: CGSize
+    var dropPosition: CGPoint?
+    var armSide: ArmSide?
+
+    init(
+        name: String,
+        offset: CGSize = .zero,
+        dropPosition: CGPoint? = nil,
+        armSide: ArmSide? = nil
+    ) {
+        self.name = name
+        self.offset = offset
+        self.dropPosition = dropPosition
+        self.armSide = armSide
+    }
 }
+

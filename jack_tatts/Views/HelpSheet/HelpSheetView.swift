@@ -9,8 +9,17 @@ import SwiftUI
 
 struct HelpSheetView: View {
     var body: some View {
-        Image("explanation")
-            .resizable()
+        ZStack {
+            // Background Image
+            Image("background")
+                .resizable()
+                .ignoresSafeArea()  // This ensures it covers the entire screen
+            
+            // Foreground Image or Content
+            Image("explanation")
+                .resizable()
+                .scaledToFit()
+        }
     }
 }
 

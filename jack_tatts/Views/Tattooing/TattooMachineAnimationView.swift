@@ -14,11 +14,14 @@ struct TattooMachineAnimationView: View {
     
     // Arm
     @State private var moveRight = true
-    @State private var tattooEverything = false
+    @State private var isTattooingRight = true
+    @State private var isTattooingLeft = false
     
     // Timer
     let timer = Timer.publish(every: 0.08, on: .main, in: .common).autoconnect()
-
+    
+    @State private var isTattooing = true
+    
     var body: some View {
         ZStack {
 
@@ -41,25 +44,15 @@ struct TattooMachineAnimationView: View {
 
         
         .onReceive(timer) { _ in
-            tattooing()
+            if isTattooingRight {
+                tattooRightArm()
+            } else if isTattooingLeft {
+                tattooLeftArm()
+            }
         }
-    }
-    
-    func tattooing() {
-        
-        // Starting on right and then jumping to left
-        if handPosition.y > 450 {
-            tattooEverything = true
-            handPosition.x = 200
-            handPosition.y = 200
-            
-        }
-        
-        // Starting left and finishing the screen
-        
-//        if handPosition.y > 450 { return }
 
-        
+    }
+    func tattooRightArm() {
         if moveRight {
             handPosition.x -= 20
             if handPosition.x < 400 {
@@ -73,8 +66,41 @@ struct TattooMachineAnimationView: View {
                 handPosition.y += 10
             }
         }
-        
+
+        // Transition to left arm
+        if handPosition.y > 430 {
+            // Reset for left arm
+            handPosition = CGPoint(x: 200, y: 200)
+            moveRight = true
+            isTattooingRight = false
+            isTattooingLeft = true
+        }
     }
+    
+    func tattooLeftArm() {
+
+        if handPosition.y >= 440 {
+            isTattooingLeft = false
+            return
+        }
+
+        if moveRight {
+            handPosition.x -= 20
+            if handPosition.x < 250 {
+                moveRight = false
+                handPosition.y += 20
+            }
+        } else {
+            handPosition.x += 20
+            if handPosition.x > 330 {
+                moveRight = true
+                handPosition.y += 10
+            }
+        }
+    }
+
+
+
 }
 
 #Preview {
