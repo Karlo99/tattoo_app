@@ -10,7 +10,7 @@ import SwiftUI
 struct TattooMachineAnimationView: View {
     // Drag motion to razor
     @GestureState private var dragOffset = CGSize.zero
-    @State private var handPosition = CGPoint(x: 450, y: 290)
+    @State private var handPosition = CGPoint(x: 400, y: 210)
     
     // Arm
     @State private var moveRight = true

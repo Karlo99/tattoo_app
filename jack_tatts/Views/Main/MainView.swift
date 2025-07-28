@@ -70,9 +70,23 @@ struct MainView: View {
                         .zIndex(10)
                 }
                 
-                
-                
                 VStack {
+                    Spacer()
+                    
+                    ActionButtonsView(
+                        cloudHeight: cloudHeight,
+                        geoSize: geo.size,
+                        hasDroppedTattoos: !droppedTattoos.isEmpty,
+                        shareableImage: shareableImage,
+                        onStartOver: {
+                            droppedTattoos.removeAll()
+                            shareableImage = nil
+                            processedImage = nil
+                            print("🔄 Start Over: Pallet cleared.")
+                        }
+                    )
+
+                    
                     Spacer()
                     CloudTattooScrollView(
                         cloudTattoos: cloudTattoos,
@@ -83,9 +97,7 @@ struct MainView: View {
                         }
                     )
                     
-                    if let shareableImage = shareableImage, let preview = processedImage {
-                        ShareLink(item: shareableImage, preview: SharePreview("Jack's Tattoo", image: preview))
-                    }
+
                 }
                 .zIndex(0)
                 
