@@ -82,6 +82,7 @@ struct MainView: View {
                             droppedTattoos.removeAll()
                             shareableImage = nil
                             processedImage = nil
+                            showTattooMachineAnimation = false
                             print("🔄 Start Over: Pallet cleared.")
                         }
                     )
@@ -115,6 +116,7 @@ struct MainView: View {
                                     .background(Image("background"))
                                     .clipShape(.capsule)
                                     .shadow(radius: 2)
+                                    .zIndex(10)
                             }
                         }
                         Spacer()

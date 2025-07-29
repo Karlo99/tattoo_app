@@ -25,25 +25,30 @@ struct ActionButtonsView: View {
                             .frame(width: 250, height: 350)
                             .shadow(radius: 4)
                     }
-                    .position(x: geoSize.width / 2 + 100, y: geoSize.height - cloudHeight - 50)
+                    .position(x: geoSize.width / 2 + 260, y: geoSize.height - cloudHeight - 50)
 
                     .zIndex(5)
                 }
             }
             
-            // Start Over Button
-            Button(action: onStartOver) {
+            VStack(spacing: -310) { // vertical stack, spacing controls gap
                 Image("start_over")
                     .resizable()
                     .frame(width: 300, height: 350)
-                    .shadow(radius: 4)
                     .rotationEffect(.degrees(90))
+                    .shadow(radius: 4)
+
+                Button(action: onStartOver) {
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(width: 80, height: 80)
+                }
+                .offset(x: -90)
             }
-            .frame(width: 200, height: 250)   // constrain the tappable frame
-            .contentShape(Rectangle())      // make tappable area match frame exactly
-            .position(x: 290, y: geoSize.height - cloudHeight - 50)
+            .frame(width: 200) // width matches image width to center button properly
+            .position(x: 290, y: geoSize.height - cloudHeight - 80)
+            .zIndex(5)
         }
-        .zIndex(5)
     }
 }
 

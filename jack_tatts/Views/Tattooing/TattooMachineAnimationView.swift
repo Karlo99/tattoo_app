@@ -31,16 +31,16 @@ struct TattooMachineAnimationView: View {
                 .frame(width: 200)
                 .position(handPosition)
         }
-        VStack {
-            Text("x: \(Int(handPosition.x)), y: \(Int(handPosition.y))")
-                .font(.headline)
-                .foregroundColor(.red)
-                .padding()
-                .background(Color.white.opacity(0.7))
-                .cornerRadius(10)
-                .padding()
-            Spacer()
-        }
+//        VStack {
+//            Text("x: \(Int(handPosition.x)), y: \(Int(handPosition.y))")
+//                .font(.headline)
+//                .foregroundColor(.red)
+//                .padding()
+//                .background(Color.white.opacity(0.7))
+//                .cornerRadius(10)
+//                .padding()
+//            Spacer()
+//        }
 
         
         .onReceive(timer) { _ in
